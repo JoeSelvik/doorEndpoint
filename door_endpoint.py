@@ -14,6 +14,9 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 send_msg(sock, config.MSG_BIND)
 
+
+print "Hello"
+
 while True:
     send_msg(sock, config.MSG_PING)
     time.sleep(config.PING_INTERVAL)
