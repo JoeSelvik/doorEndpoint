@@ -27,12 +27,17 @@ def turn_off_all_LEDs():
 rt = RealtimeService('rt.tntapp.co', 2748)
 
 
+init_LEDs()
+
+
 @rt.bind('door-1')
 def ken_face(data):
     if data['locked'] is True:
         print "led [ OFF    ]"
+        turn_off_all_LEDs()
     else:
         print "led [     ON ]"
+        turn_on_all_LEDs
 
 while True:
     pass
