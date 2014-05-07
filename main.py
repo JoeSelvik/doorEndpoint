@@ -12,7 +12,7 @@ leds = SPI(0, 0)
 
 def init_LEDs():
     PWM.start("P9_14", 100)		# red
-    PWM.start("p9_42", 100)		# green
+    PWM.start("P9_42", 100)		# green
     PWM.start("P8_13", 100)		# blue
 
 
