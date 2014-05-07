@@ -37,7 +37,7 @@ def ken_face(data):
         turn_off_all_LEDs()
     else:
         print "led [     ON ]"
-        turn_on_all_LEDs
+        turn_on_all_LEDs()
 
 while True:
     pass
