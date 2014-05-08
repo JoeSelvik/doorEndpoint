@@ -3,7 +3,7 @@ from realtime_service import RealtimeService
 from Adafruit_BBIO.SPI import SPI
 import Adafruit_BBIO.PWM as PWM
 
-# import Adafruit_BBIO.GPIO as GPIO
+import Adafruit_BBIO.GPIO as GPIO
 
 from time import sleep
 
@@ -12,6 +12,8 @@ from time import sleep
 RED = "P9_14"
 GREEN = "P9_42"
 BLUE = "P8_13"
+
+DOORPORT = "P9_16"
 
 
 # Globals
@@ -23,6 +25,9 @@ def init_LEDs():
     PWM.start(RED, 100)         # red
     PWM.start(GREEN, 100)       # green
     PWM.start(BLUE, 100)		# blue
+
+    GPIO.setup(DOORPORT, GPIO.OUT)   # LockPort
+    GPIO.output(DOORPORT, GPIO.LOW)  # Default low: locked
 
 
 def make_lights_green():
@@ -69,6 +74,7 @@ def ken_face(data):
     if data['locked'] is True:
         print "led [ OFF    ]"
         make_lights_red()
+        GPIO.output(DOORPORT, GPIO.LOW)      # Lock the door
         flash_n_times(n=3, duration=0.2)
         turn_on_all_LEDs()
         sleep(2)
@@ -77,7 +83,7 @@ def ken_face(data):
         print "led [     ON ]"
         make_lights_green()
         turn_on_all_LEDs()
-        #unlock door
+        GPIO.output(DOORPORT, GPIO.HIGH)     # Unlock the door
         sleep(5)
         flash_n_times(n=3, duration=0.2)
 
