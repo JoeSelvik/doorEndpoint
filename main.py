@@ -13,7 +13,7 @@ RED = "P9_14"
 GREEN = "P9_42"
 BLUE = "P8_13"
 
-DOORPORT = "P9_16"
+DOORPORT = "P8_10"
 
 
 # Globals
@@ -83,8 +83,9 @@ def ken_face(data):
         print "led [     ON ]"
         make_lights_green()
         turn_on_all_LEDs()
-        GPIO.output(DOORPORT, GPIO.HIGH)     # Unlock the door
+        GPIO.output(DOORPORT, GPIO.HIGH)    # Unlock the door
         sleep(5)
+        GPIO.output(DOORPORT, GPIO.LOW)     # Lock the door
         flash_n_times(n=3, duration=0.2)
 
 print "Starting doorEndpoint"
