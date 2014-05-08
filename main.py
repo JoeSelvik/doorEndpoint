@@ -20,9 +20,27 @@ rt = RealtimeService('rt.tntapp.co', 2748)
 
 
 def init_LEDs():
-    PWM.start(RED, 100)		# red
-    PWM.start(GREEN, 100)		# green
+    PWM.start(RED, 100)         # red
+    PWM.start(GREEN, 100)       # green
     PWM.start(BLUE, 100)		# blue
+
+
+def make_lights_green():
+    PWM.set_duty_cycle(RED, 0)
+    PWM.set_duty_cycle(GREEN, 100)
+    PWM.set_duty_cycle(BLUE, 0)
+
+
+def make_lights_red():
+    PWM.set_duty_cycle(RED, 100)
+    PWM.set_duty_cycle(GREEN, 0)
+    PWM.set_duty_cycle(BLUE, 0)
+
+
+def make_lights_blue():
+    PWM.set_duty_cycle(RED, 0)
+    PWM.set_duty_cycle(GREEN, 0)
+    PWM.set_duty_cycle(BLUE, 100)
 
 
 def turn_on_all_LEDs():
@@ -33,6 +51,7 @@ def turn_off_all_LEDs():
     leds.writebytes([0b11111111])
 
 
+# Start execution
 init_LEDs()
 
 
@@ -40,9 +59,11 @@ init_LEDs()
 def ken_face(data):
     if data['locked'] is True:
         print "led [ OFF    ]"
-        turn_off_all_LEDs()
+        make_lights_red()
+        #turn_off_all_LEDs()
     else:
         print "led [     ON ]"
+        make_lights_green
         turn_on_all_LEDs()
 
 print "Starting doorEndpoint"
