@@ -71,13 +71,14 @@ def ken_face(data):
         make_lights_red()
         turn_on_all_LEDs()
         sleep(2)
-        flash_n_times(n=2, duration=0.2)
+        flash_n_times(n=3, duration=0.2)
     else:
         print "led [     ON ]"
         make_lights_green()
+        turn_on_all_LEDs()
         #unlock door
         sleep(5)
-        flash_n_times(n=2, duration=0.2)
+        flash_n_times(n=3, duration=0.2)
 
 print "Starting doorEndpoint"
 
