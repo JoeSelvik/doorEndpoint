@@ -51,6 +51,14 @@ def turn_off_all_LEDs():
     leds.writebytes([0b11111111])
 
 
+def flash_n_times(n=int, speed=float):
+    for i in range(n):
+        turn_on_all_LEDs()
+        sleep(speed)
+        turn_off_all_LEDs()
+        sleep(speed)
+
+
 def flash_4seconds():
     turn_on_all_LEDs()
     sleep(0.5)
@@ -71,7 +79,7 @@ def flash_4seconds():
 
 # Start execution
 init_LEDs()
-flash_4seconds()
+flash_n_times(n=5, speed=0.3)
 
 
 @rt.bind('door-1')
@@ -79,11 +87,12 @@ def ken_face(data):
     if data['locked'] is True:
         print "led [ OFF    ]"
         make_lights_red()
-        #turn_off_all_LEDs()
+        turn_on_all_LEDs()
+        sleep(5)
     else:
         print "led [     ON ]"
         make_lights_green()
-        turn_on_all_LEDs()
+        flash_n_times(n=2, speed=1)
 
 print "Starting doorEndpoint"
 
