@@ -74,7 +74,7 @@ def ken_face(data):
     if data['locked'] is True:
         print "led [ LOCK    ]"
         make_lights_red()
-        GPIO.output(DOORPORT, GPIO.LOW)      # Lock the door
+        GPIO.output(DOORPORT, GPIO.HIGH)      # Lock the door
         flash_n_times(n=3, duration=0.2)
         turn_on_all_LEDs()
         sleep(2)
@@ -83,9 +83,9 @@ def ken_face(data):
         print "led [     UNLOCK ]"
         make_lights_green()
         turn_on_all_LEDs()
-        GPIO.output(DOORPORT, GPIO.HIGH)    # Unlock the door
+        GPIO.output(DOORPORT, GPIO.LOW)    # Unlock the door
         sleep(5)
-        GPIO.output(DOORPORT, GPIO.LOW)     # Lock the door
+        GPIO.output(DOORPORT, GPIO.HIGH)     # Lock the door
         flash_n_times(n=3, duration=0.2)
 
 print "Starting doorEndpoint"
