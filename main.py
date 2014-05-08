@@ -53,6 +53,7 @@ def turn_off_all_LEDs():
 
 # Start execution
 init_LEDs()
+turn_on_all_LEDs()
 
 
 @rt.bind('door-1')
@@ -63,7 +64,7 @@ def ken_face(data):
         #turn_off_all_LEDs()
     else:
         print "led [     ON ]"
-        make_lights_green
+        make_lights_green()
         turn_on_all_LEDs()
 
 print "Starting doorEndpoint"
