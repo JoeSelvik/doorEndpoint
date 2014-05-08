@@ -51,9 +51,27 @@ def turn_off_all_LEDs():
     leds.writebytes([0b11111111])
 
 
+def flash_4seconds():
+    turn_on_all_LEDs()
+    sleep(0.5)
+    turn_off_all_LEDs()
+    sleep(0.5)
+    turn_on_all_LEDs()
+    sleep(0.5)
+    turn_off_all_LEDs()
+    sleep(0.5)
+    turn_on_all_LEDs()
+    sleep(0.5)
+    turn_off_all_LEDs()
+    sleep(0.5)
+    turn_on_all_LEDs()
+    sleep(0.5)
+    turn_off_all_LEDs()
+
+
 # Start execution
 init_LEDs()
-turn_on_all_LEDs()
+flash_4seconds()
 
 
 @rt.bind('door-1')
