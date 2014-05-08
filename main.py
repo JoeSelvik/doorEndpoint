@@ -69,6 +69,7 @@ def ken_face(data):
     if data['locked'] is True:
         print "led [ OFF    ]"
         make_lights_red()
+        flash_n_times(n=3, duration=0.2)
         turn_on_all_LEDs()
         sleep(2)
         flash_n_times(n=3, duration=0.2)
